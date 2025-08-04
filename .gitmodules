@@ -1,3 +1,6 @@
 [submodule "plywood_mazes"]
 	path = plywood_mazes
 	url = https://github.com/rfzeg/plywood_mazes
+[submodule "ros_map_editor"]
+	path = ros_map_editor
+	url = https://github.com/TheOnceAndFutureSmalltalker/ros_map_editor
