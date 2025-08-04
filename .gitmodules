@@ -1,0 +1,3 @@
+[submodule "plywood_mazes"]
+	path = plywood_mazes
+	url = https://github.com/rfzeg/plywood_mazes
