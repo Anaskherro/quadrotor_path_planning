@@ -1,0 +1,4309 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='maze_4_metal_6x6'>
+      <frame name='metal_plate_0_0_b::__model__' attached_to='metal_plate_0_0_b::main'>
+        <pose relative_to='__model__'>0 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_0_b::main'>
+        <pose relative_to='metal_plate_0_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_0_b::__model__' attached_to='metal_joint_0_0_b::link'>
+        <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_0_b::link'>
+        <pose relative_to='metal_joint_0_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_0_b::__model__' attached_to='metal_plate_1_0_b::main'>
+        <pose relative_to='__model__'>1 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_0_b::main'>
+        <pose relative_to='metal_plate_1_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_1_0_b::__model__' attached_to='metal_joint_1_0_b::link'>
+        <pose relative_to='__model__'>1 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_1_0_b::link'>
+        <pose relative_to='metal_joint_1_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_0_b::__model__' attached_to='metal_plate_2_0_b::main'>
+        <pose relative_to='__model__'>2 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_0_b::main'>
+        <pose relative_to='metal_plate_2_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_0_b::__model__' attached_to='metal_joint_2_0_b::link'>
+        <pose relative_to='__model__'>2 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_0_b::link'>
+        <pose relative_to='metal_joint_2_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_0_b::__model__' attached_to='metal_plate_3_0_b::main'>
+        <pose relative_to='__model__'>3 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_0_b::main'>
+        <pose relative_to='metal_plate_3_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_3_0_b::__model__' attached_to='metal_joint_3_0_b::link'>
+        <pose relative_to='__model__'>3 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_3_0_b::link'>
+        <pose relative_to='metal_joint_3_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_0_b::__model__' attached_to='metal_plate_4_0_b::main'>
+        <pose relative_to='__model__'>4 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_0_b::main'>
+        <pose relative_to='metal_plate_4_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_4_0_b::__model__' attached_to='metal_joint_4_0_b::link'>
+        <pose relative_to='__model__'>4 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_4_0_b::link'>
+        <pose relative_to='metal_joint_4_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_0_b::__model__' attached_to='metal_plate_5_0_b::main'>
+        <pose relative_to='__model__'>5 0 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_0_b::main'>
+        <pose relative_to='metal_plate_5_0_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_5_0_b::__model__' attached_to='metal_joint_5_0_b::link'>
+        <pose relative_to='__model__'>5 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_5_0_b::link'>
+        <pose relative_to='metal_joint_5_0_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_6_b::__model__' attached_to='metal_plate_0_6_b::main'>
+        <pose relative_to='__model__'>0 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_6_b::main'>
+        <pose relative_to='metal_plate_0_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_6_b::__model__' attached_to='metal_joint_0_6_b::link'>
+        <pose relative_to='__model__'>0 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_6_b::link'>
+        <pose relative_to='metal_joint_0_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_6_b::__model__' attached_to='metal_plate_1_6_b::main'>
+        <pose relative_to='__model__'>1 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_6_b::main'>
+        <pose relative_to='metal_plate_1_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_1_6_b::__model__' attached_to='metal_joint_1_6_b::link'>
+        <pose relative_to='__model__'>1 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_1_6_b::link'>
+        <pose relative_to='metal_joint_1_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_6_b::__model__' attached_to='metal_plate_2_6_b::main'>
+        <pose relative_to='__model__'>2 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_6_b::main'>
+        <pose relative_to='metal_plate_2_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_6_b::__model__' attached_to='metal_joint_2_6_b::link'>
+        <pose relative_to='__model__'>2 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_6_b::link'>
+        <pose relative_to='metal_joint_2_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_6_b::__model__' attached_to='metal_plate_3_6_b::main'>
+        <pose relative_to='__model__'>3 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_6_b::main'>
+        <pose relative_to='metal_plate_3_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_3_6_b::__model__' attached_to='metal_joint_3_6_b::link'>
+        <pose relative_to='__model__'>3 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_3_6_b::link'>
+        <pose relative_to='metal_joint_3_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_6_b::__model__' attached_to='metal_plate_4_6_b::main'>
+        <pose relative_to='__model__'>4 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_6_b::main'>
+        <pose relative_to='metal_plate_4_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_4_6_b::__model__' attached_to='metal_joint_4_6_b::link'>
+        <pose relative_to='__model__'>4 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_4_6_b::link'>
+        <pose relative_to='metal_joint_4_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_6_b::__model__' attached_to='metal_plate_5_6_b::main'>
+        <pose relative_to='__model__'>5 6 0 0 -0 1.571</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_6_b::main'>
+        <pose relative_to='metal_plate_5_6_b::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_5_6_b::__model__' attached_to='metal_joint_5_6_b::link'>
+        <pose relative_to='__model__'>5 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_5_6_b::link'>
+        <pose relative_to='metal_joint_5_6_b::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_0_a::__model__' attached_to='metal_plate_0_0_a::main'>
+        <pose relative_to='__model__'>0 0 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_0_a::main'>
+        <pose relative_to='metal_plate_0_0_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_6_a::__model__' attached_to='metal_joint_6_6_a::link'>
+        <pose relative_to='__model__'>6 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_6_a::link'>
+        <pose relative_to='metal_joint_6_6_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_1_a::__model__' attached_to='metal_plate_0_1_a::main'>
+        <pose relative_to='__model__'>0 1 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_1_a::main'>
+        <pose relative_to='metal_plate_0_1_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_1_a::__model__' attached_to='metal_joint_0_1_a::link'>
+        <pose relative_to='__model__'>0 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_1_a::link'>
+        <pose relative_to='metal_joint_0_1_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_2_a::__model__' attached_to='metal_plate_0_2_a::main'>
+        <pose relative_to='__model__'>0 2 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_2_a::main'>
+        <pose relative_to='metal_plate_0_2_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_2_a::__model__' attached_to='metal_joint_0_2_a::link'>
+        <pose relative_to='__model__'>0 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_2_a::link'>
+        <pose relative_to='metal_joint_0_2_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_3_a::__model__' attached_to='metal_plate_0_3_a::main'>
+        <pose relative_to='__model__'>0 3 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_3_a::main'>
+        <pose relative_to='metal_plate_0_3_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_3_a::__model__' attached_to='metal_joint_0_3_a::link'>
+        <pose relative_to='__model__'>0 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_3_a::link'>
+        <pose relative_to='metal_joint_0_3_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_4_a::__model__' attached_to='metal_plate_0_4_a::main'>
+        <pose relative_to='__model__'>0 4 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_4_a::main'>
+        <pose relative_to='metal_plate_0_4_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_4_a::__model__' attached_to='metal_joint_0_4_a::link'>
+        <pose relative_to='__model__'>0 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_4_a::link'>
+        <pose relative_to='metal_joint_0_4_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_0_5_a::__model__' attached_to='metal_plate_0_5_a::main'>
+        <pose relative_to='__model__'>0 5 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_0_5_a::main'>
+        <pose relative_to='metal_plate_0_5_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_0_5_a::__model__' attached_to='metal_joint_0_5_a::link'>
+        <pose relative_to='__model__'>0 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_0_5_a::link'>
+        <pose relative_to='metal_joint_0_5_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_0_a::__model__' attached_to='metal_plate_6_0_a::main'>
+        <pose relative_to='__model__'>6 0 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_0_a::main'>
+        <pose relative_to='metal_plate_6_0_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_0_a::__model__' attached_to='metal_joint_6_0_a::link'>
+        <pose relative_to='__model__'>6 0 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_0_a::link'>
+        <pose relative_to='metal_joint_6_0_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_1_a::__model__' attached_to='metal_plate_6_1_a::main'>
+        <pose relative_to='__model__'>6 1 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_1_a::main'>
+        <pose relative_to='metal_plate_6_1_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_1_a::__model__' attached_to='metal_joint_6_1_a::link'>
+        <pose relative_to='__model__'>6 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_1_a::link'>
+        <pose relative_to='metal_joint_6_1_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_2_a::__model__' attached_to='metal_plate_6_2_a::main'>
+        <pose relative_to='__model__'>6 2 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_2_a::main'>
+        <pose relative_to='metal_plate_6_2_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_2_a::__model__' attached_to='metal_joint_6_2_a::link'>
+        <pose relative_to='__model__'>6 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_2_a::link'>
+        <pose relative_to='metal_joint_6_2_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_3_a::__model__' attached_to='metal_plate_6_3_a::main'>
+        <pose relative_to='__model__'>6 3 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_3_a::main'>
+        <pose relative_to='metal_plate_6_3_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_3_a::__model__' attached_to='metal_joint_6_3_a::link'>
+        <pose relative_to='__model__'>6 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_3_a::link'>
+        <pose relative_to='metal_joint_6_3_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_4_a::__model__' attached_to='metal_plate_6_4_a::main'>
+        <pose relative_to='__model__'>6 4 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_4_a::main'>
+        <pose relative_to='metal_plate_6_4_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_4_a::__model__' attached_to='metal_joint_6_4_a::link'>
+        <pose relative_to='__model__'>6 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_4_a::link'>
+        <pose relative_to='metal_joint_6_4_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_5_a::__model__' attached_to='metal_plate_6_5_a::main'>
+        <pose relative_to='__model__'>6 5 0 0 -0 3.14159</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_5_a::main'>
+        <pose relative_to='metal_plate_6_5_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_6_5_a::__model__' attached_to='metal_joint_6_5_a::link'>
+        <pose relative_to='__model__'>6 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_6_5_a::link'>
+        <pose relative_to='metal_joint_6_5_a::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_1_c::__model__' attached_to='metal_plate_4_1_c::main'>
+        <pose relative_to='__model__'>4 1 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_1_c::main'>
+        <pose relative_to='metal_plate_4_1_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_1_c::__model__' attached_to='metal_plate_5_1_c::main'>
+        <pose relative_to='__model__'>5 1 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_1_c::main'>
+        <pose relative_to='metal_plate_5_1_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_2_c::__model__' attached_to='metal_plate_1_2_c::main'>
+        <pose relative_to='__model__'>1 2 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_2_c::main'>
+        <pose relative_to='metal_plate_1_2_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_2_c::__model__' attached_to='metal_plate_2_2_c::main'>
+        <pose relative_to='__model__'>2 2 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_2_c::main'>
+        <pose relative_to='metal_plate_2_2_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_3_c::__model__' attached_to='metal_plate_3_3_c::main'>
+        <pose relative_to='__model__'>3 3 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_3_c::main'>
+        <pose relative_to='metal_plate_3_3_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_3_c::__model__' attached_to='metal_plate_5_3_c::main'>
+        <pose relative_to='__model__'>5 3 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_3_c::main'>
+        <pose relative_to='metal_plate_5_3_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_6_3_c::__model__' attached_to='metal_plate_6_3_c::main'>
+        <pose relative_to='__model__'>6 3 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_6_3_c::main'>
+        <pose relative_to='metal_plate_6_3_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_4_c::__model__' attached_to='metal_plate_4_4_c::main'>
+        <pose relative_to='__model__'>4 4 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_4_c::main'>
+        <pose relative_to='metal_plate_4_4_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_4_c::__model__' attached_to='metal_plate_5_4_c::main'>
+        <pose relative_to='__model__'>5 4 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_4_c::main'>
+        <pose relative_to='metal_plate_5_4_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_5_c::__model__' attached_to='metal_plate_2_5_c::main'>
+        <pose relative_to='__model__'>2 5 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_5_c::main'>
+        <pose relative_to='metal_plate_2_5_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_5_c::__model__' attached_to='metal_plate_3_5_c::main'>
+        <pose relative_to='__model__'>3 5 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_5_c::main'>
+        <pose relative_to='metal_plate_3_5_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_5_c::__model__' attached_to='metal_plate_4_5_c::main'>
+        <pose relative_to='__model__'>4 5 0 0 0 -1.5708</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_5_c::main'>
+        <pose relative_to='metal_plate_4_5_c::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_1_a::__model__' attached_to='metal_plate_1_1_a::main'>
+        <pose relative_to='__model__'>1 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_1_a::main'>
+        <pose relative_to='metal_plate_1_1_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_3_a::__model__' attached_to='metal_plate_1_3_a::main'>
+        <pose relative_to='__model__'>1 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_3_a::main'>
+        <pose relative_to='metal_plate_1_3_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_1_4_a::__model__' attached_to='metal_plate_1_4_a::main'>
+        <pose relative_to='__model__'>1 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_1_4_a::main'>
+        <pose relative_to='metal_plate_1_4_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_2_a::__model__' attached_to='metal_plate_2_2_a::main'>
+        <pose relative_to='__model__'>2 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_2_a::main'>
+        <pose relative_to='metal_plate_2_2_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_4_a::__model__' attached_to='metal_plate_2_4_a::main'>
+        <pose relative_to='__model__'>2 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_4_a::main'>
+        <pose relative_to='metal_plate_2_4_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_2_5_a::__model__' attached_to='metal_plate_2_5_a::main'>
+        <pose relative_to='__model__'>2 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_2_5_a::main'>
+        <pose relative_to='metal_plate_2_5_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_1_a::__model__' attached_to='metal_plate_3_1_a::main'>
+        <pose relative_to='__model__'>3 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_1_a::main'>
+        <pose relative_to='metal_plate_3_1_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_3_2_a::__model__' attached_to='metal_plate_3_2_a::main'>
+        <pose relative_to='__model__'>3 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_3_2_a::main'>
+        <pose relative_to='metal_plate_3_2_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_4_3_a::__model__' attached_to='metal_plate_4_3_a::main'>
+        <pose relative_to='__model__'>4 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_4_3_a::main'>
+        <pose relative_to='metal_plate_4_3_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_3_a::__model__' attached_to='metal_plate_5_3_a::main'>
+        <pose relative_to='__model__'>5 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_3_a::main'>
+        <pose relative_to='metal_plate_5_3_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_5_a::__model__' attached_to='metal_plate_5_5_a::main'>
+        <pose relative_to='__model__'>5 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_5_a::main'>
+        <pose relative_to='metal_plate_5_5_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_plate_5_6_a::__model__' attached_to='metal_plate_5_6_a::main'>
+        <pose relative_to='__model__'>5 6 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_plate_5_6_a::main'>
+        <pose relative_to='metal_plate_5_6_a::__model__'>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 -0.5 0.3 -1.571 -0 -1.571</pose>
+          <geometry>
+            <box>
+              <size>0.98 0.6 0.02</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <pose>0.01 -0.01 0 3.14159 -1.57059 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://metal_plate/meshes/metal_plate.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_3_1::__model__' attached_to='metal_joint_3_1::link'>
+        <pose relative_to='__model__'>3 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_3_1::link'>
+        <pose relative_to='metal_joint_3_1::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_4_1::__model__' attached_to='metal_joint_4_1::link'>
+        <pose relative_to='__model__'>4 1 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_4_1::link'>
+        <pose relative_to='metal_joint_4_1::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_1_2::__model__' attached_to='metal_joint_1_2::link'>
+        <pose relative_to='__model__'>1 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_1_2::link'>
+        <pose relative_to='metal_joint_1_2::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_2::__model__' attached_to='metal_joint_2_2::link'>
+        <pose relative_to='__model__'>2 2 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_2::link'>
+        <pose relative_to='metal_joint_2_2::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_1_3::__model__' attached_to='metal_joint_1_3::link'>
+        <pose relative_to='__model__'>1 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_1_3::link'>
+        <pose relative_to='metal_joint_1_3::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_3::__model__' attached_to='metal_joint_2_3::link'>
+        <pose relative_to='__model__'>2 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_3::link'>
+        <pose relative_to='metal_joint_2_3::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_4_3::__model__' attached_to='metal_joint_4_3::link'>
+        <pose relative_to='__model__'>4 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_4_3::link'>
+        <pose relative_to='metal_joint_4_3::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_5_3::__model__' attached_to='metal_joint_5_3::link'>
+        <pose relative_to='__model__'>5 3 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_5_3::link'>
+        <pose relative_to='metal_joint_5_3::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_4::__model__' attached_to='metal_joint_2_4::link'>
+        <pose relative_to='__model__'>2 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_4::link'>
+        <pose relative_to='metal_joint_2_4::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_4_4::__model__' attached_to='metal_joint_4_4::link'>
+        <pose relative_to='__model__'>4 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_4_4::link'>
+        <pose relative_to='metal_joint_4_4::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_5_4::__model__' attached_to='metal_joint_5_4::link'>
+        <pose relative_to='__model__'>5 4 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_5_4::link'>
+        <pose relative_to='metal_joint_5_4::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_2_5::__model__' attached_to='metal_joint_2_5::link'>
+        <pose relative_to='__model__'>2 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_2_5::link'>
+        <pose relative_to='metal_joint_2_5::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_3_5::__model__' attached_to='metal_joint_3_5::link'>
+        <pose relative_to='__model__'>3 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_3_5::link'>
+        <pose relative_to='metal_joint_3_5::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <frame name='metal_joint_5_5::__model__' attached_to='metal_joint_5_5::link'>
+        <pose relative_to='__model__'>5 5 0 0 -0 0</pose>
+      </frame>
+      <static>1</static>
+      <link name='metal_joint_5_5::link'>
+        <pose relative_to='metal_joint_5_5::__model__'>0 0 0.25 0 -0 0</pose>
+        <collision name='metal_joint_01'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_metal_joint_0'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://metal_joint/materials/scripts</uri>
+              <uri>model://metal_joint/materials/textures</uri>
+              <name>metal_joint</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.307938 -5.32459 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>91 158000000</sim_time>
+      <real_time>92 51365357</real_time>
+      <wall_time>1714474838 591171163</wall_time>
+      <iterations>91158</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='maze_4_metal_6x6'>
+        <pose>-0.307938 -5.32459 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='metal_joint_0_0_b::link'>
+          <pose>-0.307938 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_1_a::link'>
+          <pose>-0.307938 -4.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_2_a::link'>
+          <pose>-0.307938 -3.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_3_a::link'>
+          <pose>-0.307938 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_4_a::link'>
+          <pose>-0.307938 -1.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_5_a::link'>
+          <pose>-0.307938 -0.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_0_6_b::link'>
+          <pose>-0.307938 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_1_0_b::link'>
+          <pose>0.692062 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_1_2::link'>
+          <pose>0.692062 -3.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_1_3::link'>
+          <pose>0.692062 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_1_6_b::link'>
+          <pose>0.692062 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_0_b::link'>
+          <pose>1.69206 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_2::link'>
+          <pose>1.69206 -3.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_3::link'>
+          <pose>1.69206 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_4::link'>
+          <pose>1.69206 -1.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_5::link'>
+          <pose>1.69206 -0.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_2_6_b::link'>
+          <pose>1.69206 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_3_0_b::link'>
+          <pose>2.69206 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_3_1::link'>
+          <pose>2.69206 -4.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_3_5::link'>
+          <pose>2.69206 -0.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_3_6_b::link'>
+          <pose>2.69206 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_4_0_b::link'>
+          <pose>3.69206 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_4_1::link'>
+          <pose>3.69206 -4.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_4_3::link'>
+          <pose>3.69206 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_4_4::link'>
+          <pose>3.69206 -1.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_4_6_b::link'>
+          <pose>3.69206 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_5_0_b::link'>
+          <pose>4.69206 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_5_3::link'>
+          <pose>4.69206 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_5_4::link'>
+          <pose>4.69206 -1.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_5_5::link'>
+          <pose>4.69206 -0.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_5_6_b::link'>
+          <pose>4.69206 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_0_a::link'>
+          <pose>5.69206 -5.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_1_a::link'>
+          <pose>5.69206 -4.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_2_a::link'>
+          <pose>5.69206 -3.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_3_a::link'>
+          <pose>5.69206 -2.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_4_a::link'>
+          <pose>5.69206 -1.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_5_a::link'>
+          <pose>5.69206 -0.32459 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_joint_6_6_a::link'>
+          <pose>5.69206 0.67541 0.25 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_0_a::main'>
+          <pose>-0.307938 -5.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_0_b::main'>
+          <pose>-0.307938 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_1_a::main'>
+          <pose>-0.307938 -4.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_2_a::main'>
+          <pose>-0.307938 -3.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_3_a::main'>
+          <pose>-0.307938 -2.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_4_a::main'>
+          <pose>-0.307938 -1.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_5_a::main'>
+          <pose>-0.307938 -0.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_0_6_b::main'>
+          <pose>-0.307938 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_0_b::main'>
+          <pose>0.692062 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_1_a::main'>
+          <pose>0.692062 -4.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_2_c::main'>
+          <pose>0.692062 -3.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_3_a::main'>
+          <pose>0.692062 -2.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_4_a::main'>
+          <pose>0.692062 -1.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_1_6_b::main'>
+          <pose>0.692062 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_0_b::main'>
+          <pose>1.69206 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_2_a::main'>
+          <pose>1.69206 -3.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_2_c::main'>
+          <pose>1.69206 -3.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_4_a::main'>
+          <pose>1.69206 -1.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_5_a::main'>
+          <pose>1.69206 -0.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_5_c::main'>
+          <pose>1.69206 -0.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_2_6_b::main'>
+          <pose>1.69206 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_0_b::main'>
+          <pose>2.69206 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_1_a::main'>
+          <pose>2.69206 -4.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_2_a::main'>
+          <pose>2.69206 -3.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_3_c::main'>
+          <pose>2.69206 -2.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_5_c::main'>
+          <pose>2.69206 -0.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_3_6_b::main'>
+          <pose>2.69206 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_0_b::main'>
+          <pose>3.69206 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_1_c::main'>
+          <pose>3.69206 -4.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_3_a::main'>
+          <pose>3.69206 -2.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_4_c::main'>
+          <pose>3.69206 -1.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_5_c::main'>
+          <pose>3.69206 -0.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_4_6_b::main'>
+          <pose>3.69206 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_0_b::main'>
+          <pose>4.69206 -5.32459 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_1_c::main'>
+          <pose>4.69206 -4.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_3_a::main'>
+          <pose>4.69206 -2.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_3_c::main'>
+          <pose>4.69206 -2.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_4_c::main'>
+          <pose>4.69206 -1.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_5_a::main'>
+          <pose>4.69206 -0.32459 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_6_a::main'>
+          <pose>4.69206 0.67541 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_5_6_b::main'>
+          <pose>4.69206 0.67541 0 0 -0 1.571</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_0_a::main'>
+          <pose>5.69206 -5.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_1_a::main'>
+          <pose>5.69206 -4.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_2_a::main'>
+          <pose>5.69206 -3.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_3_a::main'>
+          <pose>5.69206 -2.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_3_c::main'>
+          <pose>5.69206 -2.32459 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_4_a::main'>
+          <pose>5.69206 -1.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='metal_plate_6_5_a::main'>
+          <pose>5.69206 -0.32459 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-0.587817 -0.641931 7.8964 0 1.1828 -0.279991</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <plugin filename="libcollision_map_creator.so" name="collision_map_creator"/>
+  </world>
+</sdf>
