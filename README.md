@@ -1,93 +1,76 @@
 # quadrotor_path_planning
 
 Path planning for quadrotor UAVs using the **Hybrid A*** algorithm in Gazebo simulation.  
-This repo generates collision-free paths in a labyrinth-like environment, later used by the tracking controllers.
+This repo converts a **PGM occupancy grid** (derived from a 3D world model) into an optimal path file (`path.txt`) to be used by the tracking controllers.
 
 ---
 
-## Step-by-step setup
+## Step-by-step workflow
 
-### 1. Prepare environment
-- Install **Ubuntu 20.04** and update packages:
+### 1) Setup
+- Python ≥ 3.8  
+- Install dependencies:
   ```bash
-  sudo apt update && sudo apt upgrade
+  pip install numpy scipy matplotlib opencv-python
   ```
-- Install **ROS Noetic** with Gazebo + Rviz:
+- Clone the repo (with submodules for map/visualization tools):
   ```bash
-  sudo apt install ros-noetic-desktop-full
-  ```
-- Initialize rosdep:
-  ```bash
-  sudo apt install python3-rosdep
-  sudo rosdep init
-  rosdep update
+  git clone --recurse-submodules https://github.com/Anaskherro/quadrotor_path_planning.git
+  cd quadrotor_path_planning
   ```
 
-### 2. Simulation dependencies
-- Create a catkin workspace and install `catkin_tools`:
-  ```bash
-  mkdir -p ~/catkin_ws/src
-  cd ~/catkin_ws
-  catkin init
-  ```
-- Clone quadrotor simulation models (e.g. iq_sim) for drone + sensors:
-  ```bash
-  cd ~/catkin_ws/src
-  git clone https://github.com/Intelligent-Quads/iq_sim.git
-  ```
+### 2) Convert 3D world → 2D occupancy grid (PGM)
+The planner works on a **2D occupancy grid**:
+- Obstacles = **0 (black)**  
+- Free = **255 (white)**  
 
-### 3. MAVROS + autopilot integration
-- Install MAVROS:
-  ```bash
-  sudo apt install ros-noetic-mavros ros-noetic-mavros-extras
-  ```
-- Clone ArduPilot SITL:
-  ```bash
-  cd ~
-  git clone https://github.com/ArduPilot/ardupilot.git
-  ```
+Steps:
+1. Export a top-down raster view of your 3D labyrinth or world.  
+2. Threshold to binary (0/255).  
+3. Save as `map.pgm` with resolution + origin.  
+4. Inflate obstacles according to quadrotor footprint.
 
-### 4. Launch simulation
-- Build workspace:
-  ```bash
-  cd ~/catkin_ws && catkin build
-  source ~/catkin_ws/devel/setup.bash
-  ```
-- Launch labyrinth world:
-  ```bash
-  roslaunch quadrotor_path_planning lidar.launch
-  ```
+Place it in:
+```
+maps/map.pgm
+```
 
----
+### 3) Configure planner
+In `config/` or script headers set:
+- `MAP_PGM`: path to occupancy grid  
+- `RESOLUTION`: meters/pixel  
+- `ORIGIN`: map origin (x0, y0)  
+- `ROBOT_SIZE_M`: e.g. 0.72 m square  
+- `START_M`: start (x,y)  
+- `GOAL_M`: goal (x,y)  
+- (Optional) `HEURISTIC_WEIGHT`, `GRID_RES`, `TURNING_RADIUS`
 
-## 5. Run Hybrid A* Planner
-- Configure start, goal, and map in `config/`.
-- Run planner script:
-  ```bash
-  python3 planner/planning.py
-  ```
-- The optimal path is saved in:
-  ```
-  paths/path.txt
-  ```
+### 4) Run Hybrid A*
+Generate optimal path:
+```bash
+python3 planner/planning.py
+```
+Outputs:
+```
+paths/path.txt   # waypoints (x,y) in meters
+```
+
+### 5) Visualize
+Use provided visualization utilities to display path.  
+Expected: a **blue line** path through the maze (like in the PDF example).
 
 ---
 
-## Output
-- Planned trajectory visualized in Rviz (blue line).  
-- Path file exported to be consumed by **quadrotor_path_tracking**.
-
----
-
-## Repo structure
+## Repository structure
 
 ```
 quadrotor_path_planning/
-├─ paths/            # Output trajectories
-├─ planner/          # Hybrid A* implementation
-├─ utils/            # Collision checking, grid map tools
-├─ config/           # Environment & quadrotor configs
-├─ launch/           # Launch files for Gazebo
+├─ maps/             # Input occupancy grids (.pgm)
+├─ paths/            # Output trajectories (path.txt)
+├─ planner/          # Hybrid A* algorithm
+├─ utils/            # Collision checking, map handling
+├─ config/           # Config params (start, goal, resolution, etc.)
+├─ launch/           # Optional launch files
 └─ README.md
 ```
 
