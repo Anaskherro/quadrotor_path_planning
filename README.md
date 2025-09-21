@@ -57,7 +57,7 @@ paths/path.txt   # waypoints (x,y) in meters
 
 ### 5) Visualize
 Use provided visualization utilities to display path.  
-Expected: a **blue line** path through the maze (like in the PDF example).
+Expected: a **blue line** path through the maze.
 
 ---
 
