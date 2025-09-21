@@ -1,89 +1,88 @@
-# Quadrotor Path Planning
+# quadrotor_path_planning
+
+Path planning for quadrotor UAVs using the **A* Hybrid algorithm** in a simulated Gazebo environment.  
+This repository sets up a 3D labyrinth world, models a quadrotor (3DR Iris), and computes collision-free trajectories from start to goal.
+
+---
 
 ## Overview
 
-**quadrotor_path_planning** is a project focused on calculating optimal paths for quadrotors navigating dense environments. It uses a `.pgm` map generated from a Gazebo maze (see the `plywood_mazes` submodule) and employs the hybrid A* algorithm to determine the shortest route through complex obstacle fields.
+The project demonstrates how to:
+- Install and configure ROS Noetic, Gazebo, and MAVROS.
+- Simulate a quadrotor drone (Iris) inside a 3D environment with obstacles.
+- Implement **A* Hybrid path planning** for global trajectory generation.
+- Export an optimal trajectory as reference input for tracking controllers.
 
 ---
 
 ## Features
 
-- **Hybrid A\* Algorithm:** Efficient, grid-based path planning suitable for environments with obstacles.
-- **PGM Map Integration:** Uses occupancy grid maps exported from Gazebo.
-- **Dense Environment Navigation:** Designed for challenging, cluttered spaces.
-- **Visualizations:** Plots generated paths and obstacles for easy interpretation.
-- **Modular:** Easily adapt to new maps by replacing the `.pgm` input.
+- **Simulation setup** with ROS + Gazebo + MAVROS.  
+- **Quadrotor model**: 3DR Iris with sensors (IMU, GPS, barometer).  
+- **A* Hybrid planner** in 2D/3D grid environments.  
+- **Labyrinth environment** (6 × 6 × 6 m).  
+- **Trajectory export** to `path.txt` for controllers.  
 
 ---
 
-## Installation
+## Repository structure
 
-1. **Clone the repository (with submodules!):**
+```
+quadrotor_path_planning/
+├─ worlds/                 # Gazebo labyrinth world (3D obstacles)
+├─ scripts/                # Python/C++ planning scripts
+├─ launch/                 # ROS launch files
+├─ config/                 # Parameters for planner, robot dimensions
+└─ README.md
+```
+
+---
+
+## Setup
+
+1. Install **Ubuntu 20.04** and **ROS Noetic**.  
+2. Install dependencies:
    ```bash
-   git clone --recurse-submodules https://github.com/Anaskherro/quadrotor_path_planning.git
+   sudo apt install ros-noetic-desktop-full ros-noetic-mavros ros-noetic-mavros-extras
    ```
-2. **Install Python dependencies:**
+3. Clone this repo inside your catkin workspace:
    ```bash
-   pip install matplotlib numpy
+   cd ~/catkin_ws/src
+   git clone https://github.com/Anaskherro/quadrotor_path_planning.git
+   cd ~/catkin_ws && catkin build
    ```
-3. **(Optional) Setup your Gazebo environment**  
-   Generate your maze and export the `.pgm` map using the tools in the `plywood_mazes` submodule.
+4. Source workspace:
+   ```bash
+   source ~/catkin_ws/devel/setup.bash
+   ```
 
 ---
 
 ## Usage
 
-1. **Generate your `.pgm` map** from your custom maze in Gazebo and place it in the repository directory (e.g., `cropped_map_1.pgm`).
-
-2. **Run the path planning script:**
-   ```bash
-   python scripts/path_planning/planning_a_hybrid.py
-   ```
-
-   This will:
-   - Read your `.pgm` map
-   - Compute the shortest path using the hybrid A* algorithm
-   - Save the path to `path2.txt`
-   - Display a plot of the environment and the planned path
-
-3. **Customize start/end points and drone dimensions:**  
-   Edit `scripts/path_planning/planning_a_hybrid.py` to set your desired parameters.
+- Launch Gazebo with the labyrinth world:
+  ```bash
+  roslaunch quadrotor_path_planning lidar.launch
+  ```
+- Run planner:
+  ```bash
+  rosrun quadrotor_path_planning planning.py
+  ```
+- Output trajectory is saved in:
+  ```
+  path.txt
+  ```
 
 ---
 
-## Example
+## References
 
-```python
-# Example usage in the script
-file_path = 'cropped_map_1.pgm'
-start = (0, 0)
-end = (70, 70)
-drone_dimensions = (9, 9)
-```
-
----
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request with improvements or bug fixes.  
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines (create this file if needed).
+- A* Hybrid algorithm for UAV navigation.  
+- MAVROS + Gazebo integration.  
+- [ArduPilot](https://github.com/ArduPilot/ardupilot) SITL for autopilot integration.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contact & Support
-
-Questions, suggestions, or need help?  
-Open an issue or contact [Anaskherro](https://github.com/Anaskherro).
-
----
-
-## Acknowledgements
-
-- [Gazebo](http://gazebosim.org/)
-- [Hybrid A\* Algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
+MIT (see LICENSE).
